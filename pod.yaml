@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: apm-tester
+  labels:
+    name: apm-tester
+spec:
+  containers:
+  - name: apm-tester
+    image: murtll/apm-tester:latest
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 8080
+    env:
+      - name: ELASTIC_APM_SERVER_URL
+        value: http://apm-server-7.apm-server-7:8200
